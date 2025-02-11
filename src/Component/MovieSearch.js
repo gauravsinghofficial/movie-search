@@ -12,10 +12,10 @@ const MovieSearch = () => {
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
 
+  // Automatically fetch popular movies when the page loads
   useEffect(() => {
-    if (query) {
-      dispatch(fetchMovies({ query, page }));
-    }
+    const defaultQuery = query || "popular";
+    dispatch(fetchMovies({ query: defaultQuery, page }));
   }, [query, page, dispatch]);
 
   return (
